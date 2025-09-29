@@ -3,595 +3,683 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Back of the Moon Guesthouse</title>
-        <link rel="icon" href="assets/backofthemoonLogo.png" type="image/png">
-
+    <title>About - Back of the Moon Guesthouse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --navy: #0a0e2a;
+            --dark-navy: #05081a;
+            --silver: #c0c0c0;
+            --light-silver: #e8e8e8;
+            --gold: #d4af37;
+            --white: #ffffff;
+            --moon-glow: rgba(255, 255, 255, 0.1);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0f1419 0%, #1a1f35 50%, #2d1b69 100%);
-            color: white;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--navy);
+            color: var(--silver);
+            line-height: 1.6;
             overflow-x: hidden;
-            cursor: none;
         }
-
-        /* Custom cursor */
-        .custom-cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
+        
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
-
-        /* Floating stars animation */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s ease-in-out infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        .nav-links li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links li a:hover {
-            color: #ff6b35;
-            transform: translateY(-2px);
-        }
-
-        .nav-links li a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links li a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ffffff, #ff6b35, #f7931e);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(255, 107, 53, 0.5); }
-            to { text-shadow: 0 0 40px rgba(255, 107, 53, 0.8); }
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 50px;
-            position: relative;
-            z-index: 2;
-        }
-
+        
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
         }
-
-        .section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            text-align: center;
-            background: linear-gradient(45deg, #ffffff, #ff6b35);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to bottom, var(--dark-navy), var(--navy));
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
         }
-
-        /* About Content */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .logo h1::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, var(--silver) 30%, transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--silver);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            color: var(--silver);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--gold);
+        }
+        
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+        
+        /* Page Header */
+        .page-header {
+            height: 60vh;
+            background: linear-gradient(rgba(10, 14, 42, 0.8), rgba(10, 14, 42, 0.8)), url('https://images.unsplash.com/photo-1520637836862-4d197d17c30a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .page-header-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .page-header h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--light-silver);
+        }
+        
+        /* Story Section */
+        .story-section {
+            padding: 100px 0;
+            background-color: var(--dark-navy);
+        }
+        
+        .story-content {
+            display: flex;
             gap: 50px;
             align-items: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
+        
+        .story-text {
+            flex: 1;
         }
-
-        .about-image {
+        
+        .story-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--white);
             position: relative;
-            border-radius: 20px;
+            padding-bottom: 15px;
+        }
+        
+        .story-text h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+        
+        .story-text p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: var(--light-silver);
+        }
+        
+        .story-image {
+            flex: 1;
+            border-radius: 15px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            transform: rotate(-2deg);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
-
-        .about-image:hover {
-            transform: scale(1.05) rotate(2deg);
+        
+        .story-image:hover {
+            transform: rotate(0deg) translateY(-10px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3);
         }
-
-        .about-image img {
+        
+        .story-image img {
             width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: all 0.3s ease;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
         }
-
-        .about-image:hover img {
-            filter: brightness(1.1) contrast(1.1);
+        
+        .story-image:hover img {
+            transform: scale(1.1);
         }
-
+        
         /* Values Section */
+        .values-section {
+            padding: 100px 0;
+            background-color: var(--navy);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--white);
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+        
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            gap: 40px;
         }
-
+        
         .value-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
+            background: linear-gradient(145deg, var(--moon-glow), rgba(255, 255, 255, 0.05));
+            padding: 40px;
+            border-radius: 15px;
             text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
-
-        .value-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
-            transform: rotate(0deg);
-            transition: transform 0.5s ease;
-        }
-
-        .value-card:hover::before {
-            transform: rotate(180deg);
-        }
-
+        
         .value-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: #ff6b35;
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--gold);
         }
-
+        
         .value-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--gold), #f4d03f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
             transition: all 0.3s ease;
         }
-
+        
         .value-card:hover .value-icon {
-            transform: scale(1.2) rotate(10deg);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
         }
-
+        
+        .value-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+        
+        .value-card p {
+            color: var(--light-silver);
+        }
+        
         /* Team Section */
+        .team-section {
+            padding: 100px 0;
+            background-color: var(--dark-navy);
+        }
+        
+        .team-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+        
+        .team-intro h3 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--white);
+        }
+        
+        .team-intro p {
+            font-size: 1.1rem;
+            color: var(--light-silver);
+        }
+        
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
         }
-
+        
         .team-member {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
+            background: var(--moon-glow);
+            border-radius: 15px;
             padding: 30px;
             text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
         .team-member:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: #ff6b35;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: var(--gold);
         }
-
-        .member-photo {
+        
+        .member-avatar {
             width: 120px;
             height: 120px;
+            background: linear-gradient(45deg, var(--gold), #f4d03f);
             border-radius: 50%;
             margin: 0 auto 20px;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
+            color: var(--navy);
+            font-weight: bold;
         }
-
-        /* Contact Section */
-        .contact-content {
+        
+        .team-member h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+        
+        .team-member .role {
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .team-member p {
+            color: var(--light-silver);
+            font-size: 0.95rem;
+        }
+        
+        /* Amenities Section */
+        .amenities-section {
+            padding: 100px 0;
+            background-color: var(--navy);
+        }
+        
+        .amenities-list {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
         }
-
-        .contact-info {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .contact-item {
+        
+        .amenity-item {
             display: flex;
             align-items: center;
+            padding: 20px;
+            background: var(--moon-glow);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--gold);
+        }
+        
+        .amenity-item:hover {
+            transform: translateX(10px);
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .amenity-icon {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            color: var(--gold);
+        }
+        
+        .amenity-text {
+            color: var(--light-silver);
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-navy);
+            padding: 50px 0 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--silver);
             margin-bottom: 20px;
+            display: inline-block;
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .footer-logo::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, var(--silver) 30%, transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--silver);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--moon-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--silver);
+            text-decoration: none;
             transition: all 0.3s ease;
         }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-            color: #ff6b35;
+        
+        .social-link:hover {
+            background-color: var(--gold);
+            color: var(--navy);
+            transform: translateY(-5px);
         }
-
-        .contact-item span {
-            margin-right: 15px;
-            font-size: 1.2rem;
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--light-silver);
         }
-
-        /* Responsive */
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            nav {
-                padding: 15px 20px;
+            .header-container {
+                flex-direction: column;
             }
             
-            .nav-links {
-                display: none;
+            nav ul {
+                margin-top: 20px;
             }
             
-            .hero h1 {
-                font-size: 2.5rem;
+            nav li {
+                margin: 0 10px;
             }
             
-            .about-content,
-            .contact-content {
+            .page-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .story-content {
+                flex-direction: column;
+            }
+            
+            .story-image {
+                transform: rotate(0deg);
+            }
+            
+            .values-grid, .team-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .section {
-                padding: 60px 20px;
-            }
-        }
-
-        /* Shooting stars */
-        .shooting-star {
-            position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, #fff, transparent);
-            animation: shoot 3s ease-out infinite;
-        }
-
-        @keyframes shoot {
-            0% {
-                transform: translateX(-100px) translateY(0px);
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(300px) translateY(150px);
-                opacity: 0;
-            }
-        }
-
-        /* Back to Home Button */
-        .back-home {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 25px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .back-home:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
-    <div class="custom-cursor"></div>
-    
-    <!-- Stars background -->
-    <div class="stars"></div>
-    
-    <!-- Navigation -->
-    <nav>
-        <div class="logo"><a><img src="assets/backofthemoonLogo.png" height="90" width="90"></a></div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="rooms.html">Rooms</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Back of the Moon</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#" class="active">About</a></li>
+                    <!--<li><a href="rooms.html">Rooms</a></li>-->
+                    <!--<li><a href="gallery.html">Gallery</a></li>-->
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="about">
-        <div class="hero-content">
-            <h1>Our Celestial Story</h1>
-            <p>Discover the journey behind Back of the Moon Guesthouse, where earthly comfort meets cosmic wonder.</p>
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h2>Our Story</h2>
+            <p>Discover the celestial experience that awaits you at Back of the Moon</p>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section">
+    <!-- Story Section -->
+    <section class="story-section">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Welcome to Our Cosmic Sanctuary</h2>
-                    <p>Back of the Moon Guesthouse was born from a dream to create a space where guests could escape the ordinary and connect with something greater. Our founder, Bontle Lehula, envisioned a retreat that would blend the tranquility of nature with the mystery of the cosmos.</p>
-                    <br>
-                    <p>Nestled in a serene location that feels worlds away from the hustle of daily life, our guesthouse offers a unique experience where every detail is thoughtfully designed to inspire wonder and relaxation. From our celestial-themed accommodations to our stargazing amenities, we've created an environment that encourages both exploration and introspection.</p>
-                    <br>
-                    <p>Whether you're seeking a romantic getaway, a solo retreat, or a special celebration, Back of the Moon provides the perfect backdrop for memories that will shine as brightly as the stars above.</p>
+            <div class="story-content">
+                <div class="story-text">
+                    <h3>Where Dreams Meet Reality</h3>
+                    <p>Back of the Moon Guesthouse was born from a vision of creating a sanctuary where guests could escape the ordinary and embrace the extraordinary. Named after the mystical "far side of the moon," our establishment represents a place of wonder, tranquility, and hidden beauty.</p>
+                    <p>Our founders believed that true hospitality goes beyond mere accommodation—it's about creating moments of magic, connection, and rejuvenation. Every detail has been carefully crafted to ensure that your stay with us becomes a cherished memory.</p>
+                    <p>Located away from the hustle and bustle, yet accessible to all the attractions you desire, we offer the perfect balance between serenity and convenience.</p>
                 </div>
-                <div class="about-image">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23232656'/%3E%3Ccircle cx='320' cy='80' r='40' fill='%23f0f0f0' opacity='0.9'/%3E%3Cpath d='M50 250 Q200 200 350 250' stroke='%23333' stroke-width='2' fill='none'/%3E%3Ctext x='200' y='150' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EBack of the Moon Guesthouse%3C/text%3E%3C/svg%3E" alt="Back of the Moon Guesthouse">
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Guesthouse exterior at night">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Values Section -->
-    <section class="section">
+    <section class="values-section">
         <div class="container">
-            <h2>Our Celestial Values</h2>
+            <div class="section-title">
+                <h2>Our Values</h2>
+            </div>
             <div class="values-grid">
                 <div class="value-card">
                     <div class="value-icon">🌙</div>
-                    <h3>Tranquility</h3>
-                    <p>We believe in creating peaceful spaces where guests can unwind, reflect, and reconnect with themselves away from the noise of everyday life.</p>
+                    <h4>Tranquility</h4>
+                    <p>We create peaceful environments where guests can unwind, recharge, and find inner calm away from life's stresses.</p>
                 </div>
                 <div class="value-card">
                     <div class="value-icon">⭐</div>
-                    <h3>Wonder</h3>
-                    <p>We aim to inspire awe and curiosity through our celestial theme, encouraging guests to look up and appreciate the beauty of the universe.</p>
+                    <h4>Excellence</h4>
+                    <p>Every aspect of our service is delivered with meticulous attention to detail and a commitment to exceeding expectations.</p>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">🌍</div>
-                    <h3>Connection</h3>
-                    <p>We foster meaningful connections - with nature, with the cosmos, and with fellow travelers on their own unique journeys.</p>
+                    <div class="value-icon">🤝</div>
+                    <h4>Hospitality</h4>
+                    <p>Genuine warmth and personalized care are at the heart of everything we do, making every guest feel truly welcome.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌿</div>
+                    <h4>Sustainability</h4>
+                    <p>We are committed to environmental responsibility and sustainable practices that protect our beautiful surroundings.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section class="section">
+    <section class="team-section">
         <div class="container">
-            <h2>Meet Our Stellar Team</h2>
+            <div class="team-intro">
+                <h3>Meet Our Team</h3>
+                <p>Our dedicated team of hospitality professionals is passionate about creating unforgettable experiences for our guests. Each member brings unique skills and genuine care to ensure your stay is nothing short of exceptional.</p>
+            </div>
             <div class="team-grid">
                 <div class="team-member">
-                    <div class="member-photo">👤</div>
-                    <h3>Bontle Lehula</h3>
-                    <p><strong>Founder & Host</strong></p>
-                    <p>With a passion for hospitality and a love for the night sky, Bontle brings warmth and cosmic inspiration to every guest's experience.</p>
+                    <div class="member-avatar">B</div>
+                    <h4>Bontlele Hula</h4>
+                    <div class="role">Founder & Host</div>
+                    <p>With a passion for hospitality and years of experience in creating memorable guest experiences, Bontlele ensures every stay is truly special.</p>
                 </div>
                 <div class="team-member">
-                    <div class="member-photo">👤</div>
-                    <h3>Our Hospitality Team</h3>
-                    <p><strong>Guest Experience</strong></p>
-                    <p>Dedicated to ensuring your stay is nothing short of stellar, our team is here to make your celestial retreat unforgettable.</p>
+                    <div class="member-avatar">M</div>
+                    <h4>Guest Relations</h4>
+                    <div class="role">Manager</div>
+                    <p>Our guest relations team is dedicated to making your stay seamless, handling everything from reservations to special requests with care.</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">H</div>
+                    <h4>Housekeeping</h4>
+                    <div class="role">Team</div>
+                    <p>Our meticulous housekeeping staff ensures that every room is immaculate and welcoming, maintaining the highest standards of cleanliness.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section" id="contact">
+    <!-- Amenities Section -->
+    <section class="amenities-section">
         <div class="container">
-            <h2>Connect With Us</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item">
-                        <span>📱</span>
-                        <div>
-                            <strong>Call us:</strong><br>
-                            079 588 0484
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <span>✉️</span>
-                        <div>
-                            <strong>Email us:</strong><br>
-                            bontlelehula@yahoo.com
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <span>🌍</span>
-                        <div>
-                            <strong>Follow our journey:</strong><br>
-                            Find us on social media
-                        </div>
-                    </div>
+            <div class="section-title">
+                <h2>What We Offer</h2>
+            </div>
+            <div class="amenities-list">
+                <div class="amenity-item">
+                    <div class="amenity-icon">🛏️</div>
+                    <div class="amenity-text">Comfortable, elegantly appointed rooms</div>
                 </div>
-                <div class="contact-form">
-                    <h3>Send us a message</h3>
-                    <form style="display: flex; flex-direction: column; gap: 20px;">
-                        <input type="text" placeholder="Your Name" style="padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; backdrop-filter: blur(10px);">
-                        <input type="email" placeholder="Your Email" style="padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; backdrop-filter: blur(10px);">
-                        <textarea placeholder="Your Message" rows="5" style="padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; backdrop-filter: blur(10px); resize: vertical;"></textarea>
-                        <button type="submit" class="cta-button" style="align-self: flex-start; padding: 12px 30px; background: linear-gradient(45deg, #ff6b35, #f7931e); color: white; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">Send Message</button>
-                    </form>
+                <div class="amenity-item">
+                    <div class="amenity-icon">📶</div>
+                    <div class="amenity-text">Complimentary high-speed Wi-Fi</div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">🍳</div>
+                    <div class="amenity-text">Delicious breakfast options</div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">🚗</div>
+                    <div class="amenity-text">Secure parking facilities</div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">❄️</div>
+                    <div class="amenity-text">Climate-controlled comfort</div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">🛎️</div>
+                    <div class="amenity-text">24/7 concierge service</div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">🌺</div>
+                    <div class="amenity-text">Beautiful garden spaces</div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">🧳</div>
+                    <div class="amenity-text">Luggage assistance</div>
                 </div>
             </div>
-            <a href="index.html" class="back-home">← Back to Home</a>
         </div>
     </section>
 
-    <script>
-        // Custom cursor
-        const cursor = document.querySelector('.custom-cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        // Generate random stars
-        function createStars() {
-            const starsContainer = document.querySelector('.stars');
-            for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.width = Math.random() * 3 + 1 + 'px';
-                star.style.height = star.style.width;
-                star.style.animationDelay = Math.random() * 3 + 's';
-                starsContainer.appendChild(star);
-            }
-        }
-
-        // Create shooting stars
-        function createShootingStar() {
-            const star = document.createElement('div');
-            star.className = 'shooting-star';
-            star.style.left = Math.random() * window.innerWidth + 'px';
-            star.style.top = Math.random() * window.innerHeight / 2 + 'px';
-            star.style.width = Math.random() * 100 + 50 + 'px';
-            document.body.appendChild(star);
-            
-            setTimeout(() => {
-                star.remove();
-            }, 3000);
-        }
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Initialize
-        createStars();
-        setInterval(createShootingStar, 5000);
-
-        // Parallax effect
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.stars');
-            const speed = scrolled * 0.2;
-            parallax.style.transform = `translateY(${speed}px)`;
-        });
-
-        // Form submission
-        document.querySelector('form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message! We\'ll be in touch soon. 🌙');
-        });
-    </script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Back of the Moon</div>
+                <div class="social-links">
+                    <a href="#" class="social-link">FB</a>
+                    <a href="#" class="social-link">IG</a>
+                    <a href="#" class="social-link">TW</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Back of the Moon Guesthouse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
